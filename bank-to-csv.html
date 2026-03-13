@@ -117,9 +117,9 @@
                     results.append(`
                         <tr>
                             <td>${date}</td>
+                            <td>${type}</td>
                             <td>${description.replace('ATM Check Deposit', '')}</td>
                             <td>${amount}</td>
-                            <td>${type}</td>
                         </tr>
                     `);
             });
@@ -131,7 +131,7 @@
             searchButtonCredit.click(function() {
                 console.log("search button clicked!");
 
-                const lines = inputSearch.val().split('\n');
+                const lines = inputSearchCredit.val().split('\n');
                 
                 lines.forEach(line => {
                     var date = line.substring(0, 5).trim();
@@ -145,7 +145,7 @@
                     var description = line.substring(5, lastSpace).trim();
                     console.log("Description " + description);
 
-                    var type = "ATM Check Withdrawal";
+                    var type = "";
                     if (line.includes("ATM Check Deposit")) {
                         type = "ATM Check Deposit";
                     } else if (line.includes("credit")) {
@@ -163,6 +163,8 @@
                         </tr>
                     `);
                 });
+
+                console.log('Lines ' + lines.length);
             });
         });
     </script>
